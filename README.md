@@ -64,7 +64,7 @@ Built with **Laravel 12** and **Laravel Sanctum** for secure API authentication.
 Clone the repository
 
 ```bash
-git clone https://github.com/your-username/kidneymate-backend.git
+git clone https://github.com/yourFEdev/backend-kidneyMate.git
 ```
 
 Move into the project
