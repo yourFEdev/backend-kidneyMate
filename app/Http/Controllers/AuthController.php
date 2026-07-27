@@ -55,8 +55,7 @@ class AuthController extends Controller
             'message' => 'Login successfully',
             'data' => [
                 'user' => $user,
-                'access_token' => $token,
-                'token_type' => 'Bearer',
+                'token' => $token,
                 'expires_in' => config('jwt.ttl') * 60
             ]
         ], 200);
