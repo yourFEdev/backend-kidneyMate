@@ -17,7 +17,7 @@ class WeightRecordController extends Controller
         ->get();
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Weight records fetched successfully.',
             'data' => [
                 'weight_records' => $weightRecords

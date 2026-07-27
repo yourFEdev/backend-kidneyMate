@@ -10,7 +10,7 @@ class ProfileController extends Controller
     public function show(Request $request)
     {
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Profile fetched successfully.',
             'data' => [
                 'user' => $request->user()
@@ -28,7 +28,7 @@ class ProfileController extends Controller
         $request->user()->update($validated);
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Profile updated successfully.',
             'data' => [
                 'user' => $request->user()->fresh()
@@ -49,7 +49,7 @@ class ProfileController extends Controller
         )) {
 
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'Current password is incorrect.'
             ], 400);
 
@@ -60,7 +60,7 @@ class ProfileController extends Controller
         ]);
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Password changed successfully.'
         ], 200);
     }

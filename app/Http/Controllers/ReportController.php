@@ -80,7 +80,7 @@ class ReportController extends Controller
         ];
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Report fetched successfully.',
             'data' => [
 

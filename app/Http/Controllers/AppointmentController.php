@@ -52,7 +52,7 @@ class AppointmentController extends Controller
     {
         if ($appointment->user_id !== $request->user()->id) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'You are not allowed to access this resource.'
             ], 403);
         }
@@ -70,7 +70,7 @@ class AppointmentController extends Controller
     {
         if ($appointment->user_id !== $request->user()->id) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'You are not allowed to access this resource.'
             ], 403);
         }
@@ -98,7 +98,7 @@ class AppointmentController extends Controller
     {
         if ($appointment->user_id !== $request->user()->id) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'You are not allowed to access this resource.'
             ], 403);
         }

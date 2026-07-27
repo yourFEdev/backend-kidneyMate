@@ -52,7 +52,7 @@ class BloodPressureController extends Controller
     {
          if ($bloodPressure->user_id !== $request->user()->id) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'You are not allowed to access this resource.'
             ], 403);
         }
@@ -71,7 +71,7 @@ class BloodPressureController extends Controller
 
         if ($bloodPressure->user_id !== $request->user()->id) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'You are not allowed to access this resource.'
             ], 403);
         }
@@ -81,7 +81,6 @@ class BloodPressureController extends Controller
             'diastolic' => 'required|integer|min:30|max:200',
             'pulse' => 'required|integer|min:20|max:250',
             'notes' => 'nullable|string|max:255',
-            'measured_at' => 'required|date',
         ]);
 
         $bloodPressure->update($validated);
@@ -99,7 +98,7 @@ class BloodPressureController extends Controller
     {
         if ($bloodPressure->user_id !== $request->user()->id) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'You are not allowed to access this resource.'
             ], 403);
         }

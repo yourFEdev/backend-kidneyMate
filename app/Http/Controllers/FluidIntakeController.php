@@ -34,8 +34,8 @@ class FluidIntakeController extends Controller
             'notes' => 'nullable|string|max:225',
         ]);
 
-        $validated['user_id'] = $request->user()->id;
         $validated['drank_at'] = now();
+        $validated['user_id'] = $request->user()->id;
 
         $fluid = FluidIntake::create($validated);
 
@@ -53,7 +53,7 @@ class FluidIntakeController extends Controller
     {
         if ($fluidIntake->user_id !== $request->user()->id) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'You are not allowed to access this resource.'
             ], 403);
         }
@@ -73,7 +73,7 @@ class FluidIntakeController extends Controller
 
         if ($fluidIntake->user_id !== $request->user()->id) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'You are not allowed to access this resource.'
             ], 403);
         }
@@ -82,12 +82,12 @@ class FluidIntakeController extends Controller
             'drink_name' => 'required|string|max:100',
             'amount' => 'required|integer|min:1|max:5000',
             'notes' => 'nullable|string|max:255',
-            'drank_at' => 'required|date',
         ]);
 
         $fluidIntake->update($validated);
 
         return response()->json([
+            'status' => true,
             'message' => 'Fluid intake updated.',
             'data' => $fluidIntake
         ]);
@@ -100,7 +100,7 @@ class FluidIntakeController extends Controller
     {
         if ($fluidIntake->user_id !== $request->user()->id) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'You are not allowed to access this resource.'
             ], 403);
         }
@@ -108,6 +108,7 @@ class FluidIntakeController extends Controller
         $fluidIntake->delete();
 
         return response()->json([
+            'status' => true,
             'message' => 'Fluid intake deleted.'
         ]);
     }
