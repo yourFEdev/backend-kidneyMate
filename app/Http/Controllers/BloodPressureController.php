@@ -108,9 +108,6 @@ class BloodPressureController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Data Delete Successfully',
-            'data' => [
-                'bloodPressure' => $bloodPressure,
-            ]
         ], 200);
     }
 }

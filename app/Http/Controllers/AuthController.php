@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AuthController extends Controller
 {
+    use HasFactory;
     public function register(Request $request)
     {
         $validated = $request->validate([
@@ -37,36 +37,38 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        if (!Auth::attempt($credentials)) {
+        $guard = auth()->guard('api');
+
+        $token = $guard->attempt($credentials);
+
+        if (!$token) {
             return response()->json([
                 'status' => false,
                 'message' => 'Email or password wrong'
             ], 401);
         }
 
-        $user = User::findOrFail(Auth::id());
-
-        $token = $user->createToken('api-token')->plainTextToken;
+        $user = $guard->user();
 
         return response()->json([
             'status' => true,
-            'message' => 'User registered successfully',
+            'message' => 'Login successfully',
             'data' => [
                 'user' => $user,
-                'token' => $token,
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+                'expires_in' => config('jwt.ttl') * 60
             ]
         ], 200);
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        $request
-            ->user()
-            ->currentAccessToken()
-            ->delete();
+        auth()->guard()->logout();
 
         return response()->json([
-            'message' => 'Logout berhasil'
-        ]);
+            'status' => true,
+            'message' => 'Logout successfully.'
+        ], 200);
     }
 }

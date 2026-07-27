@@ -14,19 +14,19 @@ use App\Http\Controllers\WeightRecordController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+})->middleware('auth:api');
 
 Route::post('/register',[AuthController::class,'register']);
 
 Route::post('/login',[AuthController::class,'login']);
 
-Route::middleware('auth:sanctum')->get('/me',function(Request $request) {
+Route::middleware('auth:api')->get('/me',function(Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->post('/logout',[AuthController::class,'logout']);
+Route::middleware('auth:api')->post('/logout',[AuthController::class,'logout']);
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:api')->group(function () {
     Route::apiResource('fluid-intakes', FluidIntakeController::class);
     Route::apiResource('blood-pressures', BloodPressureController::class);
     Route::apiResource('appointments', AppointmentController::class);
