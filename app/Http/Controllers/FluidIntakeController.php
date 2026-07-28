@@ -17,9 +17,7 @@ class FluidIntakeController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Data Fetched Successfully',
-            'data' => [
-                'fluid' => $fluid,
-            ]
+            'data' => $fluid,
         ], 200);
     }
 

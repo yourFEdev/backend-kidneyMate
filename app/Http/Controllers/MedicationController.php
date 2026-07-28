@@ -45,9 +45,7 @@ class MedicationController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Medication created successfully.',
-            'data' => [
-                'medication' => $medication
-            ]
+            'data' => $medication
         ], 201);
     }
 

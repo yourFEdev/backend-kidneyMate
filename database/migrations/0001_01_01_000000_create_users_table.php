@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedSmallInteger('daily_fluid_limit')
+                ->default(1500)
+                ->after('email')
+                ->comment('Daily fluid limit in ml');
+
             $table->rememberToken();
             $table->timestamps();
         });

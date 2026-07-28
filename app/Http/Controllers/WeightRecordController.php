@@ -19,9 +19,7 @@ class WeightRecordController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Weight records fetched successfully.',
-            'data' => [
-                'weight_records' => $weightRecords
-            ]
+            'data' => $weightRecords
         ], 200);
     }
 
@@ -40,9 +38,7 @@ class WeightRecordController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Weight record created successfully.',
-            'data' => [
-                'weight_record' => $weightRecord
-            ]
+            'data' => $weightRecord
         ], 201);
     }
 
@@ -58,9 +54,7 @@ class WeightRecordController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Weight record fetched successfully.',
-            'data' => [
-                'weight_record' => $weightRecord
-            ]
+            'data' => $weightRecord
         ], 200);
     }
 
@@ -84,9 +78,7 @@ class WeightRecordController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Weight record updated successfully.',
-            'data' => [
-                'weight_record' => $weightRecord
-            ]
+            'data' => $weightRecord
         ], 200);
     }
 

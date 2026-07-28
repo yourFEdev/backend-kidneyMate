@@ -19,9 +19,7 @@ class BloodPressureController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Data Fetched Successfully',
-            'data' => [
-                'bloodPressure' => $bloodPressures,
-            ]
+            'data' => $bloodPressures,
         ], 200);
     }
 
@@ -42,9 +40,7 @@ class BloodPressureController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Data Created Successfully',
-            'data' => [
-                'bloodPressure' => $bloodPressure,
-            ]
+            'data' =>  $bloodPressure,
         ], 201);
     }
 
@@ -60,9 +56,7 @@ class BloodPressureController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Data Fetched Successfully',
-            'data' => [
-                'bloodPressure' => $bloodPressure,
-            ]
+            'data' => $bloodPressure,
         ], 201);
     }
 

@@ -18,13 +18,9 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->cascadeOnDelete();
-
             $table->decimal('weight', 5, 2);
-
             $table->text('notes')->nullable();
-
             $table->dateTime('recorded_at');
-
             $table->timestamps();
         });
     }
