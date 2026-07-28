@@ -2,15 +2,15 @@
 
 Backend REST API for **KidneyMate**, a health monitoring application designed to help hemodialysis patients manage their daily health records, medications, appointments, and overall treatment progress.
 
-Built with **Laravel 12** and **Laravel Sanctum** for secure API authentication.
+Built with **Laravel 12** and **JWT** for secure API authentication.
 
 ---
+
 ## Tech Stack
 
 [![Laravel](https://img.shields.io/badge/LARAVEL-13-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
 [![MySQL](https://img.shields.io/badge/MYSQL-LATEST-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
-[![Laravel Sanctum](https://img.shields.io/badge/LARAVEL_SANCTUM-AUTH-FF2D20?style=for-the-badge)](https://laravel.com/docs/sanctum)
 [![Eloquent](https://img.shields.io/badge/ELOQUENT-ORM-EA4335?style=for-the-badge)](https://laravel.com/docs/eloquent)
 [![REST API](https://img.shields.io/badge/REST-API-14B8A6?style=for-the-badge)](https://restfulapi.net/)
 [![Composer](https://img.shields.io/badge/COMPOSER-LATEST-885630?style=for-the-badge&logo=composer&logoColor=white)](https://getcomposer.org/)
@@ -21,41 +21,41 @@ Built with **Laravel 12** and **Laravel Sanctum** for secure API authentication.
 
 ### Authentication
 
-* User Registration
-* User Login
-* User Logout
-* Token-based Authentication using Laravel Sanctum
-* Protected API Routes
+- User Registration
+- User Login
+- User Logout
+- Token-based Authentication using JWT
+- Protected API Routes
 
 ### Health Management
 
-* Fluid Intake Management
-* Blood Pressure Records
-* Weight Records
-* Medication Management
-* Appointment Scheduling
+- Fluid Intake Management
+- Blood Pressure Records
+- Weight Records
+- Medication Management
+- Appointment Scheduling
 
 ### Reports & Analytics
 
-* Dashboard Summary API
-* Health Insights API
-* Monthly Health Reports API
+- Dashboard Summary API
+- Health Insights API
+- Monthly Health Reports API
 
 ### Account
 
-* View Profile
-* Update Profile
-* Change Password
+- View Profile
+- Update Profile
+- Change Password
 
 ---
 
 ## Tech Stack
 
-* Laravel 12
-* PHP 8.2+
-* Laravel Sanctum
-* MySQL
-* Eloquent ORM
+- Laravel 13
+- PHP 8.2+
+- JWT
+- MySQL
+- Eloquent ORM
 
 ---
 
@@ -117,67 +117,67 @@ http://127.0.0.1:8000/api
 
 ### Authentication
 
-* POST `/register`
-* POST `/login`
-* POST `/logout`
+- POST `/register`
+- POST `/login`
+- POST `/logout`
 
 ### Profile
 
-* GET `/profile`
-* PUT `/profile`
-* PUT `/profile/password`
+- GET `/profile`
+- PUT `/profile`
+- PUT `/profile/password`
 
 ### Fluid Intake
 
-* GET `/fluid-intakes`
-* POST `/fluid-intakes`
-* GET `/fluid-intakes/{id}`
-* PUT `/fluid-intakes/{id}`
-* DELETE `/fluid-intakes/{id}`
+- GET `/fluid-intakes`
+- POST `/fluid-intakes`
+- GET `/fluid-intakes/{id}`
+- PUT `/fluid-intakes/{id}`
+- DELETE `/fluid-intakes/{id}`
 
 ### Blood Pressure
 
-* GET `/blood-pressures`
-* POST `/blood-pressures`
-* GET `/blood-pressures/{id}`
-* PUT `/blood-pressures/{id}`
-* DELETE `/blood-pressures/{id}`
+- GET `/blood-pressures`
+- POST `/blood-pressures`
+- GET `/blood-pressures/{id}`
+- PUT `/blood-pressures/{id}`
+- DELETE `/blood-pressures/{id}`
 
 ### Weight Records
 
-* GET `/weight-records`
-* POST `/weight-records`
-* GET `/weight-records/{id}`
-* PUT `/weight-records/{id}`
-* DELETE `/weight-records/{id}`
+- GET `/weight-records`
+- POST `/weight-records`
+- GET `/weight-records/{id}`
+- PUT `/weight-records/{id}`
+- DELETE `/weight-records/{id}`
 
 ### Medications
 
-* GET `/medications`
-* POST `/medications`
-* GET `/medications/{id}`
-* PUT `/medications/{id}`
-* DELETE `/medications/{id}`
+- GET `/medications`
+- POST `/medications`
+- GET `/medications/{id}`
+- PUT `/medications/{id}`
+- DELETE `/medications/{id}`
 
 ### Appointments
 
-* GET `/appointments`
-* POST `/appointments`
-* GET `/appointments/{id}`
-* PUT `/appointments/{id}`
-* DELETE `/appointments/{id}`
+- GET `/appointments`
+- POST `/appointments`
+- GET `/appointments/{id}`
+- PUT `/appointments/{id}`
+- DELETE `/appointments/{id}`
 
 ### Dashboard
 
-* GET `/dashboard`
+- GET `/dashboard`
 
 ### Insights
 
-* GET `/insights`
+- GET `/insights`
 
 ### Reports
 
-* GET `/reports`
+- GET `/reports`
 
 ---
 
@@ -203,4 +203,3 @@ http://127.0.0.1:8000/api
 ```
 
 ---
-

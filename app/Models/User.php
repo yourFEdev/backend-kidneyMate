@@ -2,23 +2,19 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Appointment;
+use App\Models\BloodPressure;
 use App\Models\FluidIntake;
-use Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Attributes\Hidden;
+use App\Models\Medication;
+use App\Models\WeightRecord;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-
-#[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements JWTSubject
 {
-    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     protected $fillable = [
@@ -33,17 +29,20 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
 
     public function getJWTIdentifier()
     {
         return $this->getKey();
     }
 
-    public function getJWTCustomClaims()
+    public function getJWTCustomClaims(): array
     {
         return [];
     }
@@ -71,18 +70,5 @@ class User extends Authenticatable implements JWTSubject
     public function weightRecords(): HasMany
     {
         return $this->hasMany(WeightRecord::class);
-    }
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
     }
 }

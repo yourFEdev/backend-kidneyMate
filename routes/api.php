@@ -12,19 +12,9 @@ use App\Http\Controllers\InsightController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WeightRecordController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
-
-Route::post('/register',[AuthController::class,'register']);
-
-Route::post('/login',[AuthController::class,'login']);
-
-Route::middleware('auth:api')->get('/me',function(Request $request) {
-    return $request->user();
-});
-
-Route::middleware('auth:api')->post('/logout',[AuthController::class,'logout']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('fluid-intakes', FluidIntakeController::class);

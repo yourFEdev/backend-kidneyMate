@@ -13,8 +13,8 @@ class WeightRecordController extends Controller
             'user_id',
             $request->user()->id
         )
-        ->latest('recorded_at')
-        ->get();
+            ->latest('recorded_at')
+            ->get();
 
         return response()->json([
             'status' => true,

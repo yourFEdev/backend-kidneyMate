@@ -15,13 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->unsignedSmallInteger('daily_fluid_limit')
                 ->default(1500)
-                ->after('email')
                 ->comment('Daily fluid limit in ml');
-
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
