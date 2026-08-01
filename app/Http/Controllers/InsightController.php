@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 
 class InsightController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         return response()->json([
             'status' => true,

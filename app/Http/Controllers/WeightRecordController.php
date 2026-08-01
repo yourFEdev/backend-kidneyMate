@@ -28,17 +28,17 @@ class WeightRecordController extends Controller
         $validated = $request->validate([
             'weight' => 'required|numeric|min:20|max:300',
             'notes' => 'nullable|string|max:255',
-            'recorded_at' => 'required|date',
         ]);
 
         $validated['user_id'] = $request->user()->id;
+        $validated['recorded_at'] = now();
 
         $weightRecord = WeightRecord::create($validated);
 
         return response()->json([
             'status' => true,
             'message' => 'Weight record created successfully.',
-            'data' => $weightRecord
+            'data' => $weightRecord,
         ], 201);
     }
 
