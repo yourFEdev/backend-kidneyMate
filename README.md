@@ -2,7 +2,7 @@
 
 Backend REST API for **KidneyMate**, a health monitoring application designed to help hemodialysis patients manage their daily health records, medications, appointments, and overall treatment progress.
 
-Built with **Laravel 12** and **JWT** for secure API authentication.
+Built with **Laravel 13** and **JWT** for secure API authentication.
 
 ---
 
