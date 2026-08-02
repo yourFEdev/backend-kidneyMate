@@ -15,54 +15,22 @@ class DashboardController extends Controller
     {
         $user = $request->user();
 
-        /*
-        |--------------------------------------------------------------------------
-        | Fluid Today
-        |--------------------------------------------------------------------------
-        */
-
         $fluidToday = FluidIntake::where('user_id', $user->id)
             ->whereDate('drank_at', today())
             ->sum('amount');
-
-        /*
-        |--------------------------------------------------------------------------
-        | Latest Blood Pressure
-        |--------------------------------------------------------------------------
-        */
 
         $bloodPressure = BloodPressure::where('user_id', $user->id)
             ->latest('measured_at')
             ->first();
 
-        /*
-        |--------------------------------------------------------------------------
-        | Latest Weight
-        |--------------------------------------------------------------------------
-        */
-
         $weight = WeightRecord::where('user_id', $user->id)
             ->latest('recorded_at')
             ->first();
 
-        /*
-        |--------------------------------------------------------------------------
-        | Next Dialysis
-        |--------------------------------------------------------------------------
-        */
-
         $nextDialysis = Schedule::where('user_id', $user->id)
             ->where('type', 'dialysis')
-            ->where('status', 'scheduled')
-            ->where('scheduled_at', '>=', now())
-            ->orderBy('scheduled_at')
+            ->orderByDesc('scheduled_at')
             ->first();
-
-        /*
-        |--------------------------------------------------------------------------
-        | Weekly Fluid Intake
-        |--------------------------------------------------------------------------
-        */
 
         $weeklyFluid = FluidIntake::selectRaw("
                 DATE(drank_at) as date,
@@ -77,34 +45,22 @@ class DashboardController extends Controller
             ->orderByRaw("DATE(drank_at)")
             ->get();
 
-        /*
-        |--------------------------------------------------------------------------
-        | Response
-        |--------------------------------------------------------------------------
-        */
-
         return response()->json([
             'status' => true,
             'message' => 'Dashboard fetched successfully.',
             'data' => [
 
                 'summary' => [
-
                     'fluid_today' => $fluidToday,
-
                     'fluid_limit' => $user->daily_fluid_limit,
-
                     'blood_pressure' => [
                         'systolic' => $bloodPressure?->systolic,
                         'diastolic' => $bloodPressure?->diastolic,
                     ],
-
                     'weight' => $weight?->weight,
 
                 ],
-
                 'next_dialysis' => $nextDialysis,
-
                 'weekly_fluid' => $weeklyFluid,
 
             ]
