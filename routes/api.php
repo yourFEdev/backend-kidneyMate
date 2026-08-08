@@ -12,22 +12,37 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\WeightRecordController;
 use App\Http\Controllers\DashboardController;
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register'])
+    ->middleware('throttle:register');
+
+Route::post('/login', [AuthController::class, 'login'])
+    ->middleware('throttle:login');
+
 Route::post('/logout', [AuthController::class, 'logout']);
 
+Route::middleware(['auth:api', 'throttle:api'])->group(function () {
 
-Route::middleware('auth:api')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
     Route::get('/me', [AuthController::class, 'me']);
+
     Route::apiResource('fluid-intakes', FluidIntakeController::class);
+
     Route::apiResource('blood-pressures', BloodPressureController::class);
+
     Route::apiResource('appointments', AppointmentController::class);
+
     Route::apiResource('schedule', ScheduleController::class);
+
     Route::get('/reports', [ReportController::class, 'index']);
+
     Route::get('/insight', [InsightController::class, 'index']);
+
     Route::get('/profile', [ProfileController::class, 'show']);
+
     Route::put('/profile', [ProfileController::class, 'update']);
+
     Route::put('/profile/password', [ProfileController::class, 'changePassword']);
+
     Route::apiResource('weight-records', WeightRecordController::class);
 });
